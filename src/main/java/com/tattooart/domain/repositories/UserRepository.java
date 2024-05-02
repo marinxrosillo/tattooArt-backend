@@ -34,4 +34,8 @@ public class UserRepository {
 	public Optional<User> getByUsername(String username) {
 		return userCrudRepository.getByUsername(username);
 	}
+	
+	public Optional<User> getByEmail(String email) {
+		return userCrudRepository.getByEmail(email);
+	}
 }

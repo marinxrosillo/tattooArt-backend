@@ -20,16 +20,16 @@ public class UserSecurityService implements UserDetailsService {
 		User user = this.userRepository.getByUsername(username)
 				.orElseThrow(() -> new UsernameNotFoundException("User " + username + " not found"));
 		
-		String roles[] = new String[user.getRoles().size()];
-		
-		for(int i=0; i<roles.length; i++) {
-			roles[i] = user.getRoles().get(i).getRole();	
-		}
+//		String roles[] = new String[user.getRoles().size()];
+//		
+//		for(int i=0; i<roles.length; i++) {
+//			roles[i] = user.getRoles().get(i).getRole();	
+//		}
 		
 		return org.springframework.security.core.userdetails.User.builder()
 				.username(user.getUsername())
 				.password(user.getPassword())
-				.roles(roles)
+//				.roles(roles)
 				.disabled(user.isDisabled())
 				.accountLocked(user.isLocked())
 				.build();

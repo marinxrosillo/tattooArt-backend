@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.tattooart.domain.repositories.UserRepository;
 import com.tattooart.persistence.entities.User;
+import com.tattooart.persistence.enums.Role;
 
 @Service
 public class UserService {
@@ -30,6 +31,7 @@ public class UserService {
 	public User save(User user) {
         String encryptedPassword = passwordEncoder.encode(user.getPassword());
         user.setPassword(encryptedPassword);
+        user.setRole(Role.ROLE_USER);
         return userRepository.save(user);
     }
 	

@@ -8,4 +8,6 @@ import com.tattooart.persistence.entities.User;
 public interface UserCrudRepository extends CrudRepository<User, Integer> {
 
 	Optional<User> getByUsername(String username);
+	
+	Optional<User> getByEmail(String email);
 }

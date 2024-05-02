@@ -3,11 +3,13 @@ package com.tattooart.persistence.entities;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.tattooart.persistence.enums.Role;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -34,24 +36,14 @@ public class User {
 	@Column(length = 180, unique = true)
 	private String email;
 
-	@Column(length = 255)
-	private String street;
-
-	@Column(length = 255)
-	private String number;
-
-	@Column(length = 255)
-	private String zipCode;
-
 	@Column
 	private boolean locked;
 
 	@Column
 	private boolean disabled;
 
-	@JsonIgnore
-	@OneToMany(fetch = FetchType.EAGER, mappedBy = "user")
-	private List<User_Role> roles;
+	@Enumerated(EnumType.STRING)
+    private Role role;
 
 	@JsonIgnore
 	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
@@ -98,30 +90,6 @@ public class User {
 		this.email = email;
 	}
 
-	public String getStreet() {
-		return street;
-	}
-
-	public void setStreet(String street) {
-		this.street = street;
-	}
-
-	public String getNumber() {
-		return number;
-	}
-
-	public void setNumber(String number) {
-		this.number = number;
-	}
-
-	public String getZipCode() {
-		return zipCode;
-	}
-
-	public void setZipCode(String zipCode) {
-		this.zipCode = zipCode;
-	}
-
 	public boolean isLocked() {
 		return locked;
 	}
@@ -136,14 +104,6 @@ public class User {
 
 	public void setDisabled(Boolean disabled) {
 		this.disabled = disabled;
-	}
-
-	public List<User_Role> getRoles() {
-		return roles;
-	}
-
-	public void setRoles(List<User_Role> roles) {
-		this.roles = roles;
 	}
 
 	public List<Appointment> getAppointments() {
@@ -163,4 +123,14 @@ public class User {
 		appointments.remove(appointment);
 		appointment.setUser(null);
 	}
+
+	public Role getRole() {
+		return role;
+	}
+
+	public void setRole(Role role) {
+		this.role = role;
+	}
+	
+	
 }

@@ -38,9 +38,6 @@ public class TattooList {
 	@Column(name = "price", precision = 10, scale = 2)
 	private BigDecimal price;
 
-	@Column(name = "file", length = 255)
-	private String file;
-
 	@JsonIgnore
 	@OneToMany(mappedBy = "tattooList", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<Appointment> appointments = new ArrayList<>();
@@ -92,14 +89,6 @@ public class TattooList {
 
 	public void setPrice(BigDecimal price) {
 		this.price = price;
-	}
-
-	public String getFile() {
-		return file;
-	}
-
-	public void setFile(String file) {
-		this.file = file;
 	}
 
 	public List<Appointment> getAppointments() {
