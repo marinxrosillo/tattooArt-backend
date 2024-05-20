@@ -36,6 +36,6 @@ public class UserRepository {
 	}
 	
 	public Optional<User> getByEmail(String email) {
-		return userCrudRepository.getByEmail(email);
+		return userCrudRepository.findByEmail(email);
 	}
 }

@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.tattooart.domain.dto.AppointmentDto;
 import com.tattooart.domain.services.AppointmentService;
 import com.tattooart.persistence.entities.Appointment;
 
@@ -37,8 +38,8 @@ public class AppointmentController {
 	}
 
 	@PostMapping
-	public ResponseEntity<Appointment> create(@RequestBody Appointment appointment) {
-		return new ResponseEntity<Appointment>(appointmentService.save(appointment), HttpStatus.CREATED);
+	public ResponseEntity<Appointment> create(@RequestBody AppointmentDto appointment) {
+		return new ResponseEntity<Appointment>(appointmentService.reserve(appointment), HttpStatus.CREATED);
 	}
 
 	@PutMapping("/{appointmentId}")
