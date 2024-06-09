@@ -9,8 +9,8 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.tattooart</groupId>
-	<artifactId>demo</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<artifactId>tattooArt</artifactId>
+	<version>1.0.0</version>
 	<name>tattooArt</name>
 	<description>Demo project for Spring Boot</description>
 	<properties>
