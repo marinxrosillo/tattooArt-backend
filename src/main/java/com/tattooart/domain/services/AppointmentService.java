@@ -35,13 +35,16 @@ public class AppointmentService {
 	
 	public Appointment reserve(AppointmentDto appointmentDto) {
 		Appointment appointment = new Appointment();
+		// Buscar un usuario por su email utilizando el servicio userService
 		Optional<User> user = userService.findByEmail(appointmentDto.getUser());
-		
+
+		// Verificar si el usuario existe (isPresent)
 		if (user.isPresent()) {
+			// Si el usuario existe, establecer los detalles del appointment
 			appointment.setDate(appointmentDto.getDate());
 			appointment.setTime(appointmentDto.getTime());
 			appointment.setStatus(appointmentDto.getStatus());
-			appointment.setUser(user.get());
+			appointment.setUser(user.get()); // Establecer el usuario encontrado
 			appointment.setTattooList(appointmentDto.getTattooList());
 			appointment.setTattooIst(appointmentDto.getTattooIst());
 	    }
